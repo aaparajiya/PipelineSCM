@@ -1,0 +1,27 @@
+pipeline{
+    agent any
+        stages {
+            stage('Build'){
+                steps{
+                    bat "ping www.google.com"
+                }
+            }
+            stage('Test'){
+                steps{
+                    echo "This is second stage"
+                }
+            }
+            stage("Deploy"){
+                steps{
+                    echo "This is third stage"
+                    bat "ping www.yahoo.com"
+                }
+            }
+            stage("Final confirmation"){
+                steps{
+                    bat "java --version"
+                    bat "mvn --version"
+                }
+            }
+        }
+    }
